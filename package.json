@@ -1,0 +1,56 @@
+{
+  "name": "corestack-ui",
+  "version": "0.1.0",
+  "private": false,
+  "description": "A minimal, production-ready React + TypeScript component library",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./dist/*"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "^17 || ^18",
+    "react-dom": "^17 || ^18"
+  },
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepare": "npm run build",
+    "publish": "npm publish --access public"
+  },
+  "homepage": "https://github.com/username/corestack-ui#readme",
+  "bugs": {
+    "url": "https://github.com/username/corestack-ui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProNabowy/corestack-ui"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "typescript"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}
