@@ -1,8 +1,14 @@
-import * as React from 'react';
-import { AutocompleteProps } from './Autocomplete.types';
-import { useAutocomplete } from './useAutocomplete';
+import * as React from "react";
+import { AutocompleteProps } from "./Autocomplete.types";
+import { useAutocomplete } from "./hooks";
 
-export const Autocomplete: React.FC<AutocompleteProps> = ({ options, value, onChange, placeholder, renderItem }) => {
+export const Autocomplete: React.FC<AutocompleteProps> = ({
+  options,
+  value,
+  onChange,
+  placeholder,
+  renderItem,
+}) => {
   const { input, setInput, filtered } = useAutocomplete(options);
 
   React.useEffect(() => {

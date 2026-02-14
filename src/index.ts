@@ -1,5 +1,5 @@
-export * from "./components/Button/Button";
-export * from "./components/Autocomplete/Autocomplete";
+export * from "./components/Button";
+export * from "./components/Autocomplete";
 export * from "./hooks";
 export * from "./utils";
 export * from "./types";

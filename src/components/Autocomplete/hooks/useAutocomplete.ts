@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
-import type { AutocompleteOption } from './Autocomplete.types';
+import type { AutocompleteOption } from '../Autocomplete.types';
 
-export function useAutocomplete(options: AutocompleteOption[]) {
+export default function useAutocomplete(options: AutocompleteOption[]) {
   const [input, setInput] = useState('');
 
   const filtered = useMemo(() => {

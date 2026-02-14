@@ -1,2 +1,2 @@
 // Export hooks for library consumers
-export * from '../components/Autocomplete/useAutocomplete';
+export * from '../components/Autocomplete/hooks/useAutocomplete';
