@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface AutocompleteOption {
   label: string;
@@ -11,4 +11,8 @@ export interface AutocompleteProps {
   onChange?: (value?: string) => void;
   placeholder?: string;
   renderItem?: (option: AutocompleteOption) => React.ReactNode;
+  className?: string;
+  inputClassName?: string;
+  listClassName?: string;
+  itemClassName?: string;
 }
