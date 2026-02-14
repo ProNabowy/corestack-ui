@@ -298,7 +298,7 @@ MIT © 2024 — [ProNabowy](https://github.com/ProNabowy)
 
 ## Changelog
 
-### v0.1.0 (Initial Release)
+### v0.2.0 (Initial Release)
 
 - Initial release with Button component
 - Tailwind CSS integration
