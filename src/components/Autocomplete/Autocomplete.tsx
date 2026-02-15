@@ -198,8 +198,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 			className={`${className} [&_.input-container]:pe-[54px] [&_.input-container]:gap-0`}
 		>
 			<div className="flex flex-col gap-2">
-				{renderInput(inputParams)}
 				{startAdornment}
+				{renderInput(inputParams)}
 			</div>
 
 			{open || (open && loading)
