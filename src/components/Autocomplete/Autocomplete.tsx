@@ -257,7 +257,8 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 												"aria-selected": selected,
 												className:
 													"cursor-pointer px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 " +
-													(index === activeIndex ? "bg-slate-100" : ""),
+													(index === activeIndex ? "bg-slate-100 " : "") +
+													(selected ? "bg-slate-50 font-medium text-slate-900" : ""),
 												onMouseDown: (event) => event.preventDefault(),
 												onClick: (event) => selectOption(event, option),
 											};

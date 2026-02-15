@@ -22,6 +22,7 @@ function App() {
 
 			<Autocomplete
 				options={brands}
+				disableCloseOnSelect
 				multiple
 				getOptionLabel={(brand) => brand.name}
 				renderInput={(params) => (
