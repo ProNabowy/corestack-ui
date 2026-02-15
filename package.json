@@ -1,6 +1,6 @@
 {
 	"name": "corestack-ui",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"private": false,
 	"description": "A minimal, production-ready React + TypeScript component library",
 	"main": "dist/index.cjs.js",
@@ -30,9 +30,9 @@
 		"prepare": "npm run build",
 		"publish": "npm publish --access public"
 	},
-	"homepage": "https://github.com/username/corestack-ui#readme",
+	"homepage": "https://github.com/ProNabowy/corestack-ui#readme",
 	"bugs": {
-		"url": "https://github.com/username/corestack-ui/issues"
+		"url": "https://github.com/ProNabowy/corestack-ui/issues"
 	},
 	"repository": {
 		"type": "git",
