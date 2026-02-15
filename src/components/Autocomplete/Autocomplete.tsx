@@ -67,7 +67,11 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 					>
 						{getLabel(option)}
 
-						<Button type="button" className="w-4" onClick={(event) => onRemove(event, index)}>
+						<Button
+							type="button"
+							className="w-4"
+							onClick={(event) => onRemove(event, index)}
+						>
 							<svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
 								<path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path>
 							</svg>
@@ -80,7 +84,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
 	const endAdornment = useMemo(() => {
 		return (
-			<div className="flex items-center absolute right-3">
+			<div className="flex items-center absolute rtl:left-3 ltr:right-3">
 				{inputValue ? (
 					<Button
 						type="button"
@@ -195,7 +199,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 					setOpen(true);
 				}
 			}}
-			className={`${className} [&_.input-container]:pe-[54px] [&_.input-container]:gap-0`}
+			className={`${className ?? ""} [&_.input-container]:pe-[54px]  [&_.input-container]:gap-0`}
 		>
 			<div className="flex flex-col gap-2">
 				{startAdornment}
@@ -258,7 +262,9 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 												className:
 													"cursor-pointer px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 " +
 													(index === activeIndex ? "bg-slate-100 " : "") +
-													(selected ? "bg-slate-50 font-medium text-slate-900" : ""),
+													(selected
+														? "bg-slate-100 font-medium text-slate-900"
+														: ""),
 												onMouseDown: (event) => event.preventDefault(),
 												onClick: (event) => selectOption(event, option),
 											};
