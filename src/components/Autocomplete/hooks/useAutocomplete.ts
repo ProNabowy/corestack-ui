@@ -166,6 +166,18 @@ export default function useAutocomplete<T>(props: AutocompleteProps<T>) {
 		[multiple, updateValue]
 	);
 
+	const removeOption = useCallback(
+		(event: React.SyntheticEvent, option: T) => {
+			if (!multiple) return;
+
+			const existing = Array.isArray(currentValue) ? currentValue : [];
+			const next = existing.filter((item) => !isEqual(item, option));
+			updateValue(event, next, "removeOption");
+			setActiveIndex(-1);
+		},
+		[currentValue, isEqual, multiple, updateValue]
+	);
+
 	const setInputFocused = useCallback((focused: boolean) => {
 		isFocusedRef.current = focused;
 	}, []);
@@ -335,6 +347,7 @@ export default function useAutocomplete<T>(props: AutocompleteProps<T>) {
 		isEqual,
 		selectOption,
 		clearValue,
+		removeOption,
 		disabled: !!disabled,
 		handleToggleClick,
 		handleInputChange,

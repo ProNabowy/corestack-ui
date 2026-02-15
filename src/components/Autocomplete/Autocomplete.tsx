@@ -32,6 +32,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 		isEqual,
 		selectOption,
 		clearValue,
+		removeOption,
 		disabled: isDisabled,
 		handleToggleClick,
 		handleInputChange,
@@ -39,6 +40,16 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 		handleInputBlur,
 		handleKeyDown,
 	} = useAutocomplete<T>(props);
+
+	const onRemove = React.useCallback(
+		(event: React.MouseEvent<HTMLButtonElement>, index: number) => {
+			event.stopPropagation();
+			const option = selectedValues[index];
+			if (!option || !removeOption) return;
+			removeOption(event, option);
+		},
+		[removeOption, selectedValues]
+	);
 
 	const listboxId = useMemo(
 		() => `autocomplete-listbox-${Math.random().toString(36).slice(2, 9)}`,
@@ -52,14 +63,20 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 				{selectedValues.map((option, index) => (
 					<span
 						key={`${getLabel(option)}-${index}`}
-						className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700"
+						className="inline-flex gap-2 items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700"
 					>
 						{getLabel(option)}
+
+						<Button type="button" className="w-4" onClick={(event) => onRemove(event, index)}>
+							<svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+								<path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path>
+							</svg>
+						</Button>
 					</span>
 				))}
 			</div>
 		);
-	}, [multiple, selectedValues, getLabel]);
+	}, [getLabel, multiple, onRemove, selectedValues]);
 
 	const endAdornment = useMemo(() => {
 		return (
@@ -142,7 +159,6 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
 			disabled: isDisabled,
 			InputProps: {
-				startAdornment,
 				endAdornment,
 				className: "min-h-[40px]",
 			},
@@ -181,7 +197,10 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 			}}
 			className={`${className} [&_.input-container]:pe-[54px] [&_.input-container]:gap-0`}
 		>
-			{renderInput(inputParams)}
+			<div className="flex flex-col gap-2">
+				{renderInput(inputParams)}
+				{startAdornment}
+			</div>
 
 			{open || (open && loading)
 				? (() => {
@@ -204,7 +223,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 									id={listboxId}
 									ref={listboxRef}
 									role="listbox"
-									className="max-h-60  sm:max-h-[530px] w-full overflow-auto "
+									className="max-h-60 sm:max-h-[325px] w-full overflow-auto "
 								>
 									{loading ? (
 										<svg

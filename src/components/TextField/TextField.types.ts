@@ -10,13 +10,13 @@ type TextFieldInputProps = {
 };
 
 export type TextFieldProps = {
-	value?: string | number | readonly string[];
+	value?: string | number | null | readonly string[];
 	defaultValue?: string | number | readonly string[];
 	onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 	onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 	onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 	placeholder?: string;
-	label?: string;
+	label?: string | React.ReactNode;
 	helperText?: string | false | undefined;
 	error?: boolean;
 	disabled?: boolean;
