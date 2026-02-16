@@ -84,7 +84,7 @@ export function Autocomplete<T>(props: AutocompleteProps<T>) {
 
 	const endAdornment = useMemo(() => {
 		return (
-			<div className="flex items-center absolute rtl:left-3 ltr:right-3">
+			<div className="flex items-center absolute rtl:left-3 ltr:right-2">
 				{inputValue ? (
 					<Button
 						type="button"

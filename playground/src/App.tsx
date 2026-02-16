@@ -23,7 +23,7 @@ function App() {
 			<Autocomplete
 				options={brands}
 				disableCloseOnSelect
-				multiple
+				// multiple
 				getOptionLabel={(brand) => brand.name}
 				renderInput={(params) => (
 					<TextField {...params} placeholder={t("brand")} />
